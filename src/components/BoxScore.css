@@ -1,0 +1,124 @@
+.box-score {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.box-score h3 {
+  background: #f8f9fa;
+  color: black;
+  margin: 0;
+  padding: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #ff4b16;
+}
+
+.box-score table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.box-score thead {
+  background: #f8f9fa;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.box-score th {
+  padding: 12px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #495057;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.box-score td {
+  padding: 12px 8px;
+  font-size: 14px;
+  text-align: center;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.box-score tr.totals {
+  background: #f8f9fa;
+  font-weight: 700;
+}
+
+.box-score tr.totals td {
+  border-top: 2px solid #e9ecef;
+  border-bottom: none;
+}
+
+.box-score tr.percentages {
+  color: #6c757d;
+  font-size: 13px;
+}
+
+.box-score tr.percentages td {
+  padding-top: 4px;
+  border-bottom: none;
+}
+
+/* Column specific styles */
+.box-score td:first-child {
+  text-align: left;
+  padding-left: 16px;
+  font-weight: 500;
+}
+
+.box-score td:nth-child(2),
+.box-score td:last-child {
+  font-weight: 600;
+  color: #ff4b16;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .box-score {
+    background: #1a1a1a;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .box-score thead {
+    background: #2c2c2c;
+    border-bottom-color: #404040;
+  }
+
+  .box-score th {
+    color: #ffffff;
+  }
+
+  .box-score td {
+    color: #e9ecef;
+    border-bottom-color: #404040;
+  }
+
+  .box-score tbody tr:hover {
+    background: #2c2c2c;
+  }
+
+  .box-score tr.selected {
+    background: #3d2f2b;
+  }
+
+  .box-score tr.selected:hover {
+    background: #4d3a35;
+  }
+
+  .box-score tr.totals {
+    background: #2c2c2c;
+  }
+
+  .box-score tr.totals td {
+    border-top-color: #404040;
+  }
+
+  .box-score tr.percentages {
+    color: #adb5bd;
+  }
+}

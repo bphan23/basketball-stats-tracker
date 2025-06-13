@@ -1,0 +1,301 @@
+.game-controls {
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 12px;
+  width: 70%;
+}
+
+.team-selector {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.team-selector button {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  background: #f5f5f5;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  color: #333333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.team-selector button:hover {
+  background: #eeeeee;
+  border-color: #ff4b16;
+}
+
+.team-selector button.selected {
+  background: #ff4b16;
+  border-color: #ff4b16;
+  color: #ffffff;
+}
+
+.players-section {
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.players-section h3 {
+  margin: 0 0 16px;
+  color: #333333;
+  font-size: 18px;
+}
+
+.players-container {
+  display: flex;
+  gap: 24px;
+}
+
+.team-players {
+  flex: 1;
+}
+
+.team-players h4 {
+  margin: 0 0 12px;
+  color: #333333;
+  font-size: 16px;
+}
+
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.players-grid button {
+  padding: 8px;
+  font-size: 14px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  color: #333333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.players-grid button:hover {
+  background: #f8f8f8;
+  border-color: #ff4b16;
+}
+
+.players-grid button.selected {
+  background: #ff4b16;
+  border-color: #ff4b16;
+  color: #ffffff;
+}
+
+.stats-section {
+  margin-bottom: 20px;
+}
+
+.stats-section h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.stats-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+.stats-row button {
+  padding: 8px;
+  border: 2px solid;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: bold;
+  text-align: center;
+}
+
+.stats-row button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  border-style: dotted;
+  color: #666;
+}
+
+.stats-row button:disabled:hover {
+  background: #cccccc;
+  transform: none;
+}
+
+.stats-row button.made-shot {
+  background: #ff8c00;
+  border-color: #ff8c00;
+  border-style: solid;
+  position: relative;
+}
+
+.stats-row button.made-shot::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+}
+
+.stats-row button.made-shot:hover {
+  background: #e67c00;
+  transform: translateY(-2px);
+  border-width: 3px;
+}
+
+.stats-row button.missed-shot {
+  background: #666666;
+  border-color: #666666;
+  border-style: dashed;
+  position: relative;
+}
+
+.stats-row button.missed-shot::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  background: white;
+  transform: rotate(45deg);
+}
+
+.stats-row button.missed-shot:hover {
+  background: #555555;
+  transform: translateY(-2px);
+  border-width: 3px;
+}
+
+.stats-row button.other-stat {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+  border-style: dotted;
+  position: relative;
+}
+
+.stats-row button.other-stat::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 2px;
+}
+
+.stats-row button.other-stat:hover {
+  background: #333333;
+  transform: translateY(-2px);
+  border-width: 3px;
+}
+
+.stats-row button.empty {
+  background: transparent;
+  cursor: default;
+  border: none;
+}
+
+.game-controls-footer {
+  display: flex;
+  gap: 10px;
+}
+
+.next-period-button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background: #ff8c00;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.next-period-button:hover {
+  background: #e67c00;
+  transform: translateY(-2px);
+}
+
+.undo-button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background: #666666;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.undo-button:hover {
+  background: #555555;
+  transform: translateY(-2px);
+}
+
+.undo-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  .game-controls {
+    background: #2d2d2d;
+  }
+
+  .team-selector button {
+    background: #2d2d2d;
+    border-color: #404040;
+    color: #e5e5e5;
+  }
+
+  .team-selector button:hover {
+    background: #333333;
+  }
+
+  .players-section {
+    background: #2d2d2d;
+  }
+
+  .players-section h3,
+  .team-players h4,
+  .stats-section h3 {
+    color: #e5e5e5;
+  }
+
+  .players-grid button {
+    background: #333333;
+    border-color: #404040;
+    color: #e5e5e5;
+  }
+
+  .players-grid button:hover {
+    background: #383838;
+  }
+
+  .players-grid button.selected {
+    background: #ff4b16;
+    color: #ffffff;
+  }
+}

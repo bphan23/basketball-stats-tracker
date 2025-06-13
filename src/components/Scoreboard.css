@@ -1,0 +1,271 @@
+.scoreboard {
+  padding: 32px;
+  width: calc(100% - 60px);
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  background: #1c1c1c;
+  border: 2px solid #ff4b16;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(255, 75, 22, 0.1);
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-width: 200px;
+}
+
+.team-name {
+  font-size: 36px;
+  border: 2px solid #ff4b16;
+  border-radius: 8px;
+  padding: 8px 16px;
+  min-width: 200px;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #e5e5e5;
+  background: black;
+}
+
+.score-box {
+  background: #2d2d2d;
+  border: 2px solid #ff4b16;
+  border-radius: 8px;
+  width: 240px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.score {
+  font-size: 96px;
+  font-weight: 800;
+  color: #ff4b16;
+  text-shadow: 2px 2px 4px rgba(255, 75, 22, 0.3);
+  font-family: "Arial Black", sans-serif;
+  line-height: 1;
+  text-align: center;
+}
+
+.center-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.score-separator {
+  font-size: 96px;
+  font-weight: 800;
+  color: #e5e5e5;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.1);
+  font-family: "Arial Black", sans-serif;
+  line-height: 1;
+}
+
+.period-display {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #ff4b16;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: -8px;
+}
+
+.timeouts-label {
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.timeouts {
+  display: flex;
+  gap: 8px;
+}
+
+.timeout {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff0000;
+  border: 2px solid #cc0000;
+}
+
+.timeout.used {
+  background: #333333;
+  border-color: #444444;
+}
+
+.period {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: #111111;
+  border-radius: 8px;
+}
+
+.period-label {
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.period-number {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ff0000;
+  font-family: "Arial Black", sans-serif;
+}
+
+.stats-boxes {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #2d2d2d;
+  border: 2px solid #ff4b16;
+  border-radius: 8px;
+  padding: 8px;
+  width: 80px;
+}
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e5e5e5;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ff4b16;
+  line-height: 1;
+}
+
+/* Light Mode */
+@media (prefers-color-scheme: light) {
+  .scoreboard {
+    background: #f5f5f5;
+  }
+
+  .team-name {
+    background: #ffffff;
+    color: #333333;
+  }
+
+  .score-box {
+    background: #ffffff;
+  }
+
+  .score-separator {
+    color: #333333;
+  }
+
+  .stat-box {
+    background: #ffffff;
+  }
+
+  .stat-label {
+    color: #333333;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .scoreboard {
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .team {
+    min-width: 150px;
+    gap: 8px;
+  }
+
+  .team-name {
+    font-size: 20px;
+    min-width: 150px;
+    padding: 6px 12px;
+  }
+
+  .score-box {
+    width: 180px;
+    height: 100px;
+  }
+
+  .score {
+    font-size: 64px;
+  }
+
+  .score-separator {
+    font-size: 64px;
+  }
+
+  .period-display {
+    font-size: 24px;
+    padding: 6px 12px;
+  }
+
+  .timeouts-label {
+    font-size: 16px;
+  }
+
+  .timeout {
+    width: 10px;
+    height: 10px;
+  }
+
+  .period {
+    padding: 12px 24px;
+  }
+
+  .period-label {
+    font-size: 16px;
+  }
+
+  .period-number {
+    font-size: 28px;
+  }
+
+  .stats-boxes {
+    gap: 12px;
+  }
+
+  .stat-box {
+    width: 60px;
+    padding: 6px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+  }
+
+  .stat-value {
+    font-size: 24px;
+  }
+}
