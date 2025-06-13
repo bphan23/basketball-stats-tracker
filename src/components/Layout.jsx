@@ -51,7 +51,7 @@ function Layout() {
       {/* Side Navigation */}
       <aside className="side-nav">
         <div className="nav-brand">
-          <h1>Clova</h1>
+          <h1>EzStats</h1>
         </div>
         <div className="nav-section">
           <h3 className="nav-section-title">Main</h3>
