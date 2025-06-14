@@ -1,4 +1,5 @@
 import React from "react";
+import "./PlayByPlay.css";
 
 function PlayByPlay({ playHistory }) {
   return (

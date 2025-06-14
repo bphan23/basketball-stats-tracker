@@ -31,7 +31,7 @@ function Layout() {
     },
     { path: "/games", label: "Games", icon: RiBasketballLine, active: true },
     { path: "#", label: "Teams", icon: RiTeamLine, disabled: true },
-    { path: "#", label: "Players", icon: RiUserLine, disabled: true },
+    { path: "/players", label: "Players", icon: RiUserLine, active: true },
     { path: "#", label: "Stats", icon: RiBarChartLine, disabled: true },
   ];
 

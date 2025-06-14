@@ -10,28 +10,47 @@ function BoxScore({ team, onPlayerSelect, selectedPlayerId }) {
   // Calculate team totals
   const totals = team.players.reduce(
     (acc, player) => {
-      acc.points +=
-        player.stats.points2 * 2 +
-        player.stats.points3 * 3 +
-        player.stats.freeThrows;
+      // Field Goals
       acc.fgMade += player.stats.points2 + player.stats.points3;
       acc.fgAttempted +=
         player.stats.points2 +
         player.stats.points3 +
         player.stats.missed2 +
         player.stats.missed3;
-      acc.threeMade += player.stats.points3;
-      acc.threeAttempted += player.stats.points3 + player.stats.missed3;
+
+      // 2-pointers
+      acc.twoPtMade += player.stats.points2;
+      acc.twoPtAttempted += player.stats.points2 + player.stats.missed2;
+
+      // 3-pointers
+      acc.threePtMade += player.stats.points3;
+      acc.threePtAttempted += player.stats.points3 + player.stats.missed3;
+
+      // Free Throws
       acc.ftMade += player.stats.freeThrows;
       acc.ftAttempted +=
         player.stats.freeThrows + player.stats.missedFreeThrows;
-      acc.rebounds +=
+
+      // Rebounds
+      acc.offRebounds += player.stats.offensiveRebounds;
+      acc.defRebounds += player.stats.defensiveRebounds;
+      acc.totalRebounds +=
         player.stats.offensiveRebounds + player.stats.defensiveRebounds;
+
+      // Other Stats
       acc.assists += player.stats.assists;
       acc.steals += player.stats.steals;
-      acc.blocks += player.stats.blocks;
       acc.turnovers += player.stats.turnovers;
+      acc.blocks += player.stats.blocks;
       acc.fouls += player.stats.fouls;
+
+      // Points
+      acc.points +=
+        player.stats.points2 * 2 +
+        player.stats.points3 * 3 +
+        player.stats.freeThrows;
+
+      // Efficiency
       acc.efficiency +=
         player.stats.points2 * 2 +
         player.stats.points3 * 3 +
@@ -44,22 +63,27 @@ function BoxScore({ team, onPlayerSelect, selectedPlayerId }) {
           player.stats.missed3 +
           player.stats.missedFreeThrows +
           player.stats.turnovers);
+
       return acc;
     },
     {
-      points: 0,
       fgMade: 0,
       fgAttempted: 0,
-      threeMade: 0,
-      threeAttempted: 0,
+      twoPtMade: 0,
+      twoPtAttempted: 0,
+      threePtMade: 0,
+      threePtAttempted: 0,
       ftMade: 0,
       ftAttempted: 0,
-      rebounds: 0,
+      offRebounds: 0,
+      defRebounds: 0,
+      totalRebounds: 0,
       assists: 0,
       steals: 0,
-      blocks: 0,
       turnovers: 0,
+      blocks: 0,
       fouls: 0,
+      points: 0,
       efficiency: 0,
     }
   );
@@ -71,15 +95,17 @@ function BoxScore({ team, onPlayerSelect, selectedPlayerId }) {
         <thead>
           <tr>
             <th>Player</th>
-            <th>PTS</th>
-            <th>FG</th>
-            <th>3PT</th>
-            <th>FT</th>
+            <th>FGM-A</th>
+            <th>2PM-A</th>
+            <th>3PM-A</th>
+            <th>FTM-A</th>
+            <th>OREB</th>
+            <th>DREB</th>
             <th>REB</th>
             <th>AST</th>
             <th>STL</th>
-            <th>BLK</th>
             <th>TO</th>
+            <th>BLK</th>
             <th>PF</th>
             <th>EFF</th>
             <th>PTS</th>
@@ -87,22 +113,24 @@ function BoxScore({ team, onPlayerSelect, selectedPlayerId }) {
         </thead>
         <tbody>
           {team.players.map((player) => {
+            const fgMade = player.stats.points2 + player.stats.points3;
+            const fgAttempted =
+              fgMade + player.stats.missed2 + player.stats.missed3;
+            const twoPtMade = player.stats.points2;
+            const twoPtAttempted = twoPtMade + player.stats.missed2;
+            const threePtMade = player.stats.points3;
+            const threePtAttempted = threePtMade + player.stats.missed3;
+            const ftMade = player.stats.freeThrows;
+            const ftAttempted = ftMade + player.stats.missedFreeThrows;
+            const totalRebounds =
+              player.stats.offensiveRebounds + player.stats.defensiveRebounds;
             const points =
               player.stats.points2 * 2 +
               player.stats.points3 * 3 +
               player.stats.freeThrows;
-            const fgMade = player.stats.points2 + player.stats.points3;
-            const fgAttempted =
-              fgMade + player.stats.missed2 + player.stats.missed3;
-            const threeMade = player.stats.points3;
-            const threeAttempted = threeMade + player.stats.missed3;
-            const ftMade = player.stats.freeThrows;
-            const ftAttempted = ftMade + player.stats.missedFreeThrows;
-            const rebounds =
-              player.stats.offensiveRebounds + player.stats.defensiveRebounds;
             const efficiency =
               points +
-              rebounds +
+              totalRebounds +
               player.stats.assists +
               player.stats.steals +
               player.stats.blocks -
@@ -118,15 +146,17 @@ function BoxScore({ team, onPlayerSelect, selectedPlayerId }) {
                 className={selectedPlayerId === player.id ? "selected" : ""}
               >
                 <td>{player.name}</td>
-                <td>{points}</td>
-                <td>{`${fgMade}/${fgAttempted}`}</td>
-                <td>{`${threeMade}/${threeAttempted}`}</td>
-                <td>{`${ftMade}/${ftAttempted}`}</td>
-                <td>{rebounds}</td>
+                <td>{`${fgMade}-${fgAttempted}`}</td>
+                <td>{`${twoPtMade}-${twoPtAttempted}`}</td>
+                <td>{`${threePtMade}-${threePtAttempted}`}</td>
+                <td>{`${ftMade}-${ftAttempted}`}</td>
+                <td>{player.stats.offensiveRebounds}</td>
+                <td>{player.stats.defensiveRebounds}</td>
+                <td>{totalRebounds}</td>
                 <td>{player.stats.assists}</td>
                 <td>{player.stats.steals}</td>
-                <td>{player.stats.blocks}</td>
                 <td>{player.stats.turnovers}</td>
+                <td>{player.stats.blocks}</td>
                 <td>{player.stats.fouls}</td>
                 <td>{efficiency}</td>
                 <td>{points}</td>
@@ -135,35 +165,32 @@ function BoxScore({ team, onPlayerSelect, selectedPlayerId }) {
           })}
           <tr className="totals">
             <td>TOTAL</td>
-            <td>{totals.points}</td>
-            <td>{`${totals.fgMade}/${totals.fgAttempted}`}</td>
-            <td>{`${totals.threeMade}/${totals.threeAttempted}`}</td>
-            <td>{`${totals.ftMade}/${totals.ftAttempted}`}</td>
-            <td>{totals.rebounds}</td>
+            <td>{`${totals.fgMade}-${totals.fgAttempted}`}</td>
+            <td>{`${totals.twoPtMade}-${totals.twoPtAttempted}`}</td>
+            <td>{`${totals.threePtMade}-${totals.threePtAttempted}`}</td>
+            <td>{`${totals.ftMade}-${totals.ftAttempted}`}</td>
+            <td>{totals.offRebounds}</td>
+            <td>{totals.defRebounds}</td>
+            <td>{totals.totalRebounds}</td>
             <td>{totals.assists}</td>
             <td>{totals.steals}</td>
-            <td>{totals.blocks}</td>
             <td>{totals.turnovers}</td>
+            <td>{totals.blocks}</td>
             <td>{totals.fouls}</td>
             <td>{totals.efficiency}</td>
             <td>{totals.points}</td>
           </tr>
           <tr className="percentages">
             <td></td>
-            <td></td>
             <td>{calculatePercentage(totals.fgMade, totals.fgAttempted)}</td>
             <td>
-              {calculatePercentage(totals.threeMade, totals.threeAttempted)}
+              {calculatePercentage(totals.twoPtMade, totals.twoPtAttempted)}
+            </td>
+            <td>
+              {calculatePercentage(totals.threePtMade, totals.threePtAttempted)}
             </td>
             <td>{calculatePercentage(totals.ftMade, totals.ftAttempted)}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td colSpan="10"></td>
           </tr>
         </tbody>
       </table>

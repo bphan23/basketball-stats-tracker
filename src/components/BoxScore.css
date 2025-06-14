@@ -6,16 +6,50 @@
   margin-bottom: 20px;
 }
 
+.box-score-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ff6900;
+  padding: 16px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.box-score-header h3 {
+  color: white;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.box-score-export-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  background: white;
+  color: #ff6900;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.box-score-export-button:hover {
+  background: #fff3e0;
+  transform: translateY(-1px);
+}
+
 .box-score h3 {
-  background: #f8f9fa;
-  color: black;
+  background-color: #ff6900;
   margin: 0;
   padding: 16px;
   font-size: 20px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-bottom: 2px solid #ff4b16;
+  border-bottom: 2px solid #e9ecef;
 }
 
 .box-score table {
@@ -35,6 +69,12 @@
   color: #495057;
   text-align: center;
   text-transform: uppercase;
+  border-right: 1px solid #e9ecef;
+  white-space: nowrap;
+}
+
+.box-score th:last-child {
+  border-right: none;
 }
 
 .box-score td {
@@ -42,6 +82,44 @@
   font-size: 14px;
   text-align: center;
   border-bottom: 1px solid #e9ecef;
+  border-right: 1px solid #e9ecef;
+}
+
+.box-score td:last-child {
+  border-right: none;
+}
+
+/* Group borders for stat categories */
+.box-score th:nth-child(1),
+.box-score td:nth-child(1) {
+  border-right: 2px solid #e9ecef;
+  text-align: left;
+  padding-left: 16px;
+  font-weight: 500;
+}
+
+/* After shooting stats */
+.box-score th:nth-child(4),
+.box-score td:nth-child(4) {
+  border-right: 2px solid #e9ecef;
+}
+
+/* After rebounds */
+.box-score th:nth-child(7),
+.box-score td:nth-child(7) {
+  border-right: 2px solid #e9ecef;
+}
+
+/* After assists/steals/turnovers */
+.box-score th:nth-child(10),
+.box-score td:nth-child(10) {
+  border-right: 2px solid #e9ecef;
+}
+
+/* After blocks/fouls */
+.box-score th:nth-child(12),
+.box-score td:nth-child(12) {
+  border-right: 2px solid #e9ecef;
 }
 
 .box-score tr.totals {
@@ -51,7 +129,6 @@
 
 .box-score tr.totals td {
   border-top: 2px solid #e9ecef;
-  border-bottom: none;
 }
 
 .box-score tr.percentages {
@@ -64,24 +141,21 @@
   border-bottom: none;
 }
 
-/* Column specific styles */
-.box-score td:first-child {
-  text-align: left;
-  padding-left: 16px;
-  font-weight: 500;
-}
-
-.box-score td:nth-child(2),
-.box-score td:last-child {
-  font-weight: 600;
-  color: #ff4b16;
-}
-
 /* Dark mode styles */
 @media (prefers-color-scheme: dark) {
   .box-score {
     background: #1a1a1a;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .box-score h3 {
+    background: #2c2c2c;
+    color: #ffffff;
+    border-bottom-color: #ff4b16;
+  }
+
+  .box-score table {
+    border-color: #404040;
   }
 
   .box-score thead {
@@ -91,23 +165,27 @@
 
   .box-score th {
     color: #ffffff;
+    border-right-color: #404040;
   }
 
   .box-score td {
     color: #e9ecef;
     border-bottom-color: #404040;
+    border-right-color: #404040;
   }
 
-  .box-score tbody tr:hover {
-    background: #2c2c2c;
-  }
-
-  .box-score tr.selected {
-    background: #3d2f2b;
-  }
-
-  .box-score tr.selected:hover {
-    background: #4d3a35;
+  /* Group borders for dark mode */
+  .box-score th:nth-child(1),
+  .box-score td:nth-child(1),
+  .box-score th:nth-child(4),
+  .box-score td:nth-child(4),
+  .box-score th:nth-child(7),
+  .box-score td:nth-child(7),
+  .box-score th:nth-child(10),
+  .box-score td:nth-child(10),
+  .box-score th:nth-child(12),
+  .box-score td:nth-child(12) {
+    border-right-color: #404040;
   }
 
   .box-score tr.totals {
@@ -120,5 +198,9 @@
 
   .box-score tr.percentages {
     color: #adb5bd;
+  }
+
+  .box-score tr.selected {
+    background: #3d2f2b;
   }
 }
