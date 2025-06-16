@@ -3,7 +3,7 @@
   padding: 32px;
   margin: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   gap: 48px;
   border-radius: 16px;
@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   min-width: 200px;
 }
 
@@ -32,8 +32,8 @@
 .score-box {
   background-color: black;
   border-radius: 16px;
-  width: 240px;
-  height: 140px;
+  width: 280px;
+  height: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +41,7 @@
 }
 
 .score {
-  font-size: 96px;
+  font-size: 120px;
   font-weight: 800;
   color: white;
   text-shadow: 2px 2px 4px rgba(255, 75, 22, 0.3);
@@ -55,6 +55,8 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
+
+  flex: 0 1 120px;
 }
 
 .score-separator {
@@ -69,7 +71,7 @@
   font-size: 32px;
   color: white;
   font-weight: 700;
-  background: gray;
+  background: #2d2d2d;
   padding: 8px 16px;
   border-radius: 16px;
   text-transform: uppercase;
@@ -148,4 +150,56 @@
   font-weight: 700;
   color: #ff6900;
   line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .scoreboard {
+    gap: 24px;
+    padding: 20px 8px;
+  }
+  .team {
+    min-width: 140px;
+    flex: 1 1 140px;
+  }
+  .score-box {
+    width: 140px;
+    height: 80px;
+  }
+  .score {
+    font-size: 48px;
+  }
+  .team-name {
+    font-size: 20px;
+    min-width: 100px;
+    padding: 4px 8px;
+  }
+  .center-info {
+    flex: 0 1 60px;
+  }
+  .score-separator {
+    font-size: 48px;
+  }
+  .period-display {
+    font-size: 18px;
+    padding: 4px 8px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .scoreboard {
+    flex-direction: column;
+    gap: 16px;
+    padding: 10px 2px;
+  }
+  .team {
+    min-width: 0;
+    width: 100%;
+    flex: 1 1 100%;
+  }
+  .center-info {
+    flex: 0 1 100%;
+    width: 100%;
+    margin: 0 auto;
+  }
 }

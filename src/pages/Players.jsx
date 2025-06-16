@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiAddLine, RiSearchLine, RiCloseLine } from "react-icons/ri";
 import "./Players.css";
+import { getPlayers } from "../services/apiPlayers";
 
 function Players() {
   const [showAddModal, setShowAddModal] = useState(false);
@@ -18,6 +19,10 @@ function Players() {
     },
     // Add more sample players as needed
   ]);
+
+  useEffect(function () {
+    getPlayers().then((data) => console.log(data));
+  }, []);
 
   const [newPlayer, setNewPlayer] = useState({
     name: "",
@@ -97,12 +102,12 @@ function Players() {
           <thead>
             <tr>
               <th>Player</th>
-              <th>Team</th>
-              <th>Position</th>
               <th>Height</th>
+              <th>Position</th>
               <th>Weight</th>
               <th>Email</th>
               <th>Phone</th>
+              <th>Team</th>
             </tr>
           </thead>
           <tbody>

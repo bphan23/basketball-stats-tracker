@@ -2,8 +2,169 @@
   background: white;
   margin-left: 30px;
   padding: 30px;
-  border-radius: 16px;
+  border-radius: 24px;
   width: 30%;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  max-height: 900px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  max-height: 400px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.play-history h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+  color: #1c1c1c;
+  letter-spacing: -0.5px;
+  position: relative;
+  padding-bottom: 16px;
+}
+
+.play-history h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 140px;
+  height: 4px;
+  background: #ff6900;
+  border-radius: 2px;
+}
+
+.play-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+  padding-right: 8px;
+  max-height: calc(900px - 100px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ff6900 #f0f0f0;
+}
+
+.play-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.play-list::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 3px;
+}
+
+.play-list::-webkit-scrollbar-thumb {
+  background: #ff6900;
+  border-radius: 3px;
+}
+
+.play-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  background: #f9fafb;
+  border-left: 4px solid #e5e7eb;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.play-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.home-team-play {
+  border-left-color: #ff6900;
+  background: linear-gradient(135deg, #fff7f0 0%, #ffe5d0 100%);
+}
+
+.away-team-play {
+  border-left-color: #2563eb;
+  background: linear-gradient(135deg, #f0f7ff 0%, #d0e3ff 100%);
+}
+
+.team-indicator {
+  display: none;
+}
+
+.play-period {
+  display: none;
+}
+
+.play-description {
+  flex: 1;
+  color: #1c1c1c;
+  line-height: 1.4;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .play-history {
+    background: #1c1c1c;
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+
+  .play-history h3 {
+    color: #ffffff;
+  }
+
+  .play-list::-webkit-scrollbar-track {
+    background: #2d2d2d;
+  }
+
+  .play-item {
+    background: #232323;
+    color: #e5e5e5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-left: 4px solid #404040;
+  }
+
+  .play-item:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    background: #282828;
+  }
+
+  .home-team-play {
+    background: linear-gradient(135deg, #2d1a0a 0%, #3a2412 100%);
+    border-left-color: #ff6900;
+  }
+
+  .away-team-play {
+    background: linear-gradient(135deg, #0a1a2d 0%, #12243a 100%);
+    border-left-color: #2563eb;
+  }
+
+  .play-description {
+    color: #e5e5e5;
+  }
+}
+
+.dark-mode .play-history {
+  background-color: #1c1c1c;
+}
+
+.dark-mode .play-history h3 {
+  color: white;
 }
